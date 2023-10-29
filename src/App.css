@@ -1,1 +1,21 @@
- 
+.inputBox {
+    position: relative;
+  }
+  
+  .inputBox input {
+    padding: 8px 20px;
+    outline: none;
+    background: transparent;
+    border-radius: 5px;
+    font-size: 1em;
+  }
+  
+  .inputBox span {
+    position: absolute;
+    left: 0;
+    font-size: 0.7em;
+    transform: translateX(14px) translateY(-7.5px);
+    padding: 0 6px 1px 5px;
+    border-radius: 2px;
+    letter-spacing: 1px;
+  }

@@ -1,4 +1,5 @@
 import { React, useEffect } from "react";
+import { useNavigate } from 'react-router-dom';
 
 import { SlArrowRight } from "react-icons/sl";
 import {
@@ -19,6 +20,7 @@ import { IoLogoWhatsapp } from "react-icons/io";
 import { FaArrowAltCircleRight } from "react-icons/fa";
 import { FaArrowAltCircleLeft } from "react-icons/fa";
 import { AiOutlineCloudUpload } from "react-icons/ai";
+import { HiOutlineMail } from "react-icons/hi";
 
 
 import { createClient } from 'contentful';
@@ -31,6 +33,7 @@ import Whoweare from "../Components/Whoweare";
  // import { EffectCoverflow, Pagination, Navigation } from "swiper";
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
+
   return (
     // <div
     //   className={className}
@@ -63,6 +66,90 @@ function SamplePrevArrow(props) {
  
 
 function Home(){
+  const navigate = useNavigate();
+
+  
+
+
+  const items = [
+    {
+      id: 1,
+      name: 'Fabric 1',
+      price: 25.99,
+      image:'ach1.jpg'
+    },
+    {
+      id: 2,
+      name: 'Fabric 2',
+      price: 30.99,
+      image:'ach2.jpg'
+    },
+    {
+      id: 3,
+      name: 'Fabric 3',
+      price: 25.99,
+      image:'ach3.jpg'
+    },
+    {
+      id: 4,
+      name: 'Fabric 4',
+      price: 30.99,
+      image:'ach4.jpg'
+    },
+    {
+      id: 5,
+      name: 'Fabric 5',
+      price: 25.99,
+      image:'ach5.jpg'
+    },
+    {
+      id: 6,
+      name: 'Fabric 6',
+      price: 30.99,
+      image:'ach6.jpg'
+    },
+    {
+      id: 6,
+      name: 'Fabric 6',
+      price: 30.99,
+      image:'ach7.jpg'
+    },
+    {
+      id: 6,
+      name: 'Fabric 6',
+      price: 30.99,
+      image:'ach8.jpg'
+    },
+    {
+      id: 6,
+      name: 'Fabric 6',
+      price: 30.99,
+      image:'ach9.jpg'
+    },
+
+    // Add more items as needed
+  ];
+  
+  const [itemQuantities, setItemQuantities] = useState(
+    items.reduce((acc, item) => {
+      acc[item.id] = 0;
+      return acc;
+    }, {})
+  );
+
+  const incrementQuantity = (itemId) => {
+    setItemQuantities((prevQuantities) => ({
+      ...prevQuantities,
+      [itemId]: prevQuantities[itemId] + 1,
+    }));
+  };
+
+  const decrementQuantity = (itemId) => {
+    setItemQuantities((prevQuantities) => ({
+      ...prevQuantities,
+      [itemId]: Math.max(prevQuantities[itemId] - 1, 0),
+    }));
+  };
     
   
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -149,34 +236,34 @@ function Home(){
         <div className="px-6 ">
           <p className="  rounded overflow-hidden shadow-lg cursor-pointer ">
             <img
-              src="/bg1.png"
+              src="bg1.png"
               alt="Image Alt Text"
               // style={{ width: "auto", height: "auto" }}
             />
           </p>
         </div>
         <div className="px-6 ">
-          <p className=" rounded overflow-hidden shadow-lg cursor-pointer">
-            <img
-              src="/bg2.png"
+          <p className=" rounded overflow-hidden shadow-lg cursor-pointer"onClick={() => {navigate("/Saveadate")}}>
+            <img className="w-[1400px] h-[500px]"
+              src="bg4news.jpeg"
               alt="Image Alt Text"
               // style={{ width: "300px", height: "400px" }}
             />
           </p>
         </div>
         <div className="px-6 ">
-          <p className="  rounded overflow-hidden shadow-lg cursor-pointer">
+          <p className="  rounded overflow-hidden shadow-lg cursor-pointer"onClick={() => {navigate("/Whatwedo")}}>
             <img
-              src="/bg3.png"
+              src="bg3.png"
               alt="Image Alt Text"
               // style={{ width: "300px", height: "400px" }}
             />
           </p>
         </div>
         <div className="px-6 ">
-          <p className="  rounded overflow-hidden shadow-lg cursor-pointer">
+          <p className="  rounded overflow-hidden shadow-lg cursor-pointer"onClick={() => {navigate("/Primeblossoms")}}>
             <img
-              src="bg2.png"
+              src="bg4.png"
               alt="Image Alt Text"
               // style={{ width: "300px", height: "400px" }}
             />
@@ -196,10 +283,16 @@ function Home(){
           data-bs-ride="carousel"
           data-bs-interval="3000"
         ></div>
+           
+           <div className="absolute  flex justify-between  w-full mt-10 ">
+           <img className="   w-[250px] h-[200px]     " src="leftnews.png" alt=""/>
+            <img className="  w-[250px] h-[200px]    float-right   " src="rightnews.png" alt=""/>
+           </div>
+
   
-        <div className=" text-4xl  sm:mt-20 mt-10 bg-purple-400 py-20 py-10">
+        <div className=" text-4xl  w-auto px-10 sm:mt-40 mt-10   py-20 py-10"style={{ backgroundColor: "#B6ADFD"}}>
           <h3 className="sm:text-4xl text-sm text-center">
-            Customise your own design
+            Upload your own design
           </h3>
   
           <div className="sm:flex justify-center   pt-4   ">
@@ -208,8 +301,8 @@ function Home(){
                 className="pl-4 pr-4   border rounded-full sm:py-4 py-2 text-sm cursor-pointer bg-white text-sm flex"
                 for="resume"
               >
-                <AiOutlineCloudUpload className="w-5 h-5 mr-3" />
-                Upload resume
+                <AiOutlineCloudUpload className="w-5 h-5 mr-3 " />
+                 <p className="ml-10">Photos</p> 
               </label>
               <input
                 id="resume"
@@ -219,212 +312,82 @@ function Home(){
               />
             </div>
   
-            <p className="sm:text-xl text-sm sm:pt-3 pt-0 text-center sm:pl-4 pl-0">
-              or
-            </p>
+           
   
-            <div className="  sm:pl-4 pl-12 w-60">
-              <input
-                type="text"
-                className=" pl-2 pr-4   border rounded-full sm:py-4 py-2 text-sm "
-                placeholder="Customise your favourite"
-              />
-            </div>
+           
           </div>
         </div>
   
         <div className="flex justify-between">
           <div>
-            <img className="w-[150px] h-[200px]" src="roseside.png" alt=""/>
+            <img className="w-[500px] h-[200px]    pr-72" src="leftnew.png" alt=""/>
           </div>
           <h3 className="sm:text-4xl text-sm text-center sm:pt-20 pt-10 ">
             {" "}
             Collections Avaiable
           </h3>
           <div>
-            <img className="w-[150px] h-[200px]" src="roseside.png" alt=""/>
+            <img className="w-[400px] h-[200px]     pl-40" src="rightnew.png" alt=""/>
           </div>
         </div>
   
         <Slider {...settings} className="w-[88vw] m-auto">
-  
-        <div class="w-60   bg-gray-50 p-3 flex flex-col gap-1 rounded-2xl">
-    <div class="    rounded-xl">
-        <img
-                src="ach1.jpg"
-                alt="Image Alt Text"
-                style={{ width: "300px", height: "400px" }}
-              />
-    </div>
-    <div class="flex flex-col gap-4">
-      <div class="flex flex-row justify-between">
-        <div class="flex flex-col">
-          <span class="text-xl font-bold">Long Chair</span>
-          <p class="text-xs text-gray-700">ID: 23432252</p>
+  {items.map((item) => (
+    <div key={item.id} className="w-60 bg-gray-50 p-3 flex flex-col gap-1 rounded-2xl">
+      <img src={item.image} alt="ach" />
+      <div className="flex flex-row justify-between">
+        <div className="flex flex-col">
+          <span className="text-xl font-bold">{item.name}</span>
+          <p className="text-xs text-gray-700">ID: {item.id}</p>
         </div>
-        <span class="font-bold  text-red-600">$25.99</span>
+        <span className="font-bold text-red-600">${item.price}</span>
       </div>
-      <button class="hover:bg-sky-700 text-gray-50 bg-sky-800 py-2 rounded-md">Add to cart</button>
-    </div>
-  </div>
-  
-  <div class="w-60   bg-gray-50 p-3 flex flex-col gap-1 rounded-2xl">
-    <div class="    rounded-xl">
-        <img
-                src="ach2.jpg"
-                alt="Image Alt Text"
-                style={{ width: "300px", height: "400px" }}
-              />
-    </div>
-    <div class="flex flex-col gap-4">
-      <div class="flex flex-row justify-between">
-        <div class="flex flex-col">
-          <span class="text-xl font-bold">Long Chair</span>
-          <p class="text-xs text-gray-700">ID: 23432252</p>
+      <div className="flex justify-between">
+        <div className="flex flex-row items-center gap-4">
+          <button
+            onClick={() => decrementQuantity(item.id)}
+            className="text-white px-3 py-1 rounded-lg transition duration-200 ease-in-out hover:bg-purple-700 active:bg-purple-900 focus:outline-none"
+            style={{ backgroundColor: "#B6ADFD" }}
+          >
+            -  
+          </button>
+          <span className="text-sm font-bold">{itemQuantities[item.id]} meters</span>
+          <button
+            onClick={() => incrementQuantity(item.id)}
+            className="text-white px-3 py-1 rounded-lg transition duration-200 ease-in-out hover-bg-purple-700 active:bg-purple-900 focus:outline-none"
+            style={{ backgroundColor: "#B6ADFD" }}
+          >
+            +  
+          </button>
         </div>
-        <span class="font-bold  text-red-600">$25.99</span>
+        <button
+          className="text-white px-4 py-2 rounded-lg transition duration-200 ease-in-out hover:bg-purple-700 active:bg-purple-900 focus:outline-none"
+          style={{ backgroundColor: "#B6ADFD" }}
+        >
+          Add to cart
+        </button>
       </div>
-      <button class="hover:bg-sky-700 text-gray-50 bg-sky-800 py-2 rounded-md">Add to cart</button>
     </div>
-  </div>
-  
-  <div class="w-60   bg-gray-50 p-3 flex flex-col gap-1 rounded-2xl">
-    <div class="    rounded-xl">
-        <img
-                src="ach3.jpg"
-                alt="Image Alt Text"
-                style={{ width: "300px", height: "400px" }}
-              />
-    </div>
-    <div class="flex flex-col gap-4">
-      <div class="flex flex-row justify-between">
-        <div class="flex flex-col">
-          <span class="text-xl font-bold">Long Chair</span>
-          <p class="text-xs text-gray-700">ID: 23432252</p>
-        </div>
-        <span class="font-bold  text-red-600">$25.99</span>
-      </div>
-      <button class="hover:bg-sky-700 text-gray-50 bg-sky-800 py-2 rounded-md">Add to cart</button>
-    </div>
-  </div>
-  
-  <div class="w-60   bg-gray-50 p-3 flex flex-col gap-1 rounded-2xl">
-    <div class="    rounded-xl">
-        <img
-                src="ach4.jpg"
-                alt="Image Alt Text"
-                style={{ width: "300px", height: "400px" }}
-              />
-    </div>
-    <div class="flex flex-col gap-4">
-      <div class="flex flex-row justify-between">
-        <div class="flex flex-col">
-          <span class="text-xl font-bold">Long Chair</span>
-          <p class="text-xs text-gray-700">ID: 23432252</p>
-        </div>
-        <span class="font-bold  text-red-600">$25.99</span>
-      </div>
-      <button class="hover:bg-sky-700 text-gray-50 bg-sky-800 py-2 rounded-md">Add to cart</button>
-    </div>
-  </div>
-  
-  <div class="w-60   bg-gray-50 p-3 flex flex-col gap-1 rounded-2xl">
-    <div class="    rounded-xl">
-        <img
-                src="ach5.jpg"
-                alt="Image Alt Text"
-                style={{ width: "300px", height: "400px" }}
-              />
-    </div>
-    <div class="flex flex-col gap-4">
-      <div class="flex flex-row justify-between">
-        <div class="flex flex-col">
-          <span class="text-xl font-bold">Long Chair</span>
-          <p class="text-xs text-gray-700">ID: 23432252</p>
-        </div>
-        <span class="font-bold  text-red-600">$25.99</span>
-      </div>
-      <button class="hover:bg-sky-700 text-gray-50 bg-sky-800 py-2 rounded-md">Add to cart</button>
-    </div>
-  </div>
-  
-  <div class="w-60   bg-gray-50 p-3 flex flex-col gap-1 rounded-2xl">
-    <div class="    rounded-xl">
-        <img
-                src="ach6.jpg"
-                alt="Image Alt Text"
-                style={{ width: "300px", height: "400px" }}
-              />
-    </div>
-    <div class="flex flex-col gap-4">
-      <div class="flex flex-row justify-between">
-        <div class="flex flex-col">
-          <span class="text-xl font-bold">Long Chair</span>
-          <p class="text-xs text-gray-700">ID: 23432252</p>
-        </div>
-        <span class="font-bold  text-red-600">$25.99</span>
-      </div>
-      <button class="hover:bg-sky-700 text-gray-50 bg-sky-800 py-2 rounded-md">Add to cart</button>
-    </div>
-  </div>
-  
-  <div class="w-60   bg-gray-50 p-3 flex flex-col gap-1 rounded-2xl">
-    <div class="    rounded-xl">
-        <img
-                src="ach7.jpg"
-                alt="Image Alt Text"
-                style={{ width: "300px", height: "400px" }}
-              />
-    </div>
-    <div class="flex flex-col gap-4">
-      <div class="flex flex-row justify-between">
-        <div class="flex flex-col">
-          <span class="text-xl font-bold">Long Chair</span>
-          <p class="text-xs text-gray-700">ID: 23432252</p>
-        </div>
-        <span class="font-bold  text-red-600">$25.99</span>
-      </div>
-      <button class="hover:bg-sky-700 text-gray-50 bg-sky-800 py-2 rounded-md">Add to cart</button>
-    </div>
-  </div>
-  
-  <div class="w-60   bg-gray-50 p-3 flex flex-col gap-1 rounded-2xl">
-    <div class="    rounded-xl">
-        <img
-                src="ach8.jpg"
-                alt="Image Alt Text"
-                style={{ width: "300px", height: "400px" }}
-              />
-    </div>
-    <div class="flex flex-col gap-4">
-      <div class="flex flex-row justify-between">
-        <div class="flex flex-col">
-          <span class="text-xl font-bold">Long Chair</span>
-          <p class="text-xs text-gray-700">ID: 23432252</p>
-        </div>
-        <span class="font-bold  text-red-600">$25.99</span>
-      </div>
-      <button class="hover:bg-sky-700 text-gray-50 bg-sky-800 py-2 rounded-md">Add to cart</button>
-    </div>
-  </div>
-  
+  ))}
+</Slider>
+
+
         
-        </Slider>
   
         <div className=" relative mt-20">
           <div className="  sm:h-[800px] h-400px    ">
-            <div className="  h-[100px] bg-purple-400    ">
+            <div className="  h-[100px]      "style={{ backgroundColor: "#B6ADFD"}}>
               <h2 className="sm:text-6xl text-sm flex justify-center pt-4">
                 Get in touch with us
               </h2>
   
               <div className="sm:flex justify-between ">
                 <div className="sm:ml-40 ml-20   ">
-                  <h3 className="sm:text-2xl text-sm sm:ml-0 ml-8">
+                  <h3 className="sm:text-2xl text-sm sm:ml-3 ml-8">
                     Join Our Team
                   </h3>
   
-                  <div className=" sm:mt-0 mt-1  w-48 ">
+                  <div className=" sm:mt-2 mt-1  w-48 ">
                     <label
                       className="pl-4 pr-4   border rounded-full sm:py-4 py-1 text-sm cursor-pointer bg-white text-sm flex"
                       for="resume"
@@ -440,15 +403,17 @@ function Home(){
                     />
                   </div>
   
-                  <div className="sm:ml-0 ml-4 ">
-                    <button className="border rounded-full w-32 h-7 bg-white  mt-3">
-                      <p className="text-center  text-gray-800">Submit </p>
-                    </button>
+                  <div className="sm:ml-10 ml-4 ">
+                  <button
+                    class="  text-white px-4 py-2 rounded-full transition duration-200 ease-in-out hover:bg-purple-700 active:bg-purple-900 focus:outline-none"
+                    style={{ backgroundColor: "#B6ADFD"}}>
+                    Submit
+                  </button>
                   </div>
                 </div>
   
                 <div className=" mr-20  sm:w-auto w-80   text-center sm:mt-0 mt-4">
-                  <h4 className="font-bold sm:text-xl text-sm">Visit The Shop</h4>
+                  <h4 className="font-bold sm:text-xl text-sm">Visit Our Shop</h4>
                   <p className="sm:text-xl text-sm">
                     No 14/16, Gurunathan Street,
                   </p>
@@ -459,13 +424,12 @@ function Home(){
                   <p className="sm:text-xl text-sm">Trichy – 620017.</p>
                 </div>
               </div>
-              <div className="flex justify-center  " >
-                <img className="w-[800px] h-[120px] " src="rose1.png" alt=""/>
-              </div>
+              
             </div>
             <p
-              className="sm:h-[300px] h-[200px] w-full bg-purple-400 rounded-b-full"
+              className="sm:h-[300px] h-[200px] w-full   rounded-b-full" 
               style={{
+                backgroundColor: "#B6ADFD",
                 borderBottomLeftRadius: "100%",
                 borderBottomRightRadius: "100%",
               }}
@@ -479,29 +443,36 @@ function Home(){
   
   
   
-          <div className=" absolute    sm:top-80 top-80 sm:left-[20vw] left-[0vw]">
-            <div className="  flex justify-center ">
-             
+          <div className=" absolute     sm:top-80 top-80 sm:left-[20vw] left-[0vw]">
+            <div className="  ">
+             <div className="absolute">
+              <img className="w-[200px] h-[200px]" src="violet rose.png"/>
+             </div>
               <div className="flex justify-center      overflow-hidden shadow-lg sm:w-[800px] w-[300px] h-60   bg-white">
                 <div className=" mt-8 ">
                   <h2 className="text-center">Track Your Order</h2>
                   <div className="  mt-4 text-blue-400">
-                    <input
-                      type="text"
-                      className="pl-6 pr-4  border rounded-full py-2 text-sm bg-purple-400 text-black focus:outline-none  sm:w-auto w-40"
-                      placeholder="Order Number"
-                    />
+                  <input
+                type="search"
+                className=" pl-2 pr-4 bg-white border-black mt-4  text-center border rounded-full sm:py-auto  py-2  px-10  text-sm outline-none"
+                placeholder="Order number" 
+              />
                   </div>
                   <div className="  mt-4">
                     <div className="absolute inset-y-0 left-0 flex items-center pl-3  "></div>
                     <input
-                      type="text"
-                      className="pl-6 pr-4  border rounded-full py-2 text-sm text-black bg-purple-400  focus:outline-none sm:w-auto w-40"
-                      placeholder="Phone Number"
-                    />
+                type="search"
+                className=" pl-2 pr-4 bg-white border-black mt-4  text-center border rounded-full sm:py-auto  py-2  px-10  text-sm outline-none"
+                placeholder="Phone number" 
+              />
                   </div>
+                  <div className="absolute   mb-20   right-0 bottom-0 ">
+              <img className="w-[200px] h-[200px]" src="violet rose.png"/>
+             </div>
                 </div>
+                
               </div>
+             
             </div>
             <div className="flex justify-center mt-8 ">
               <p>
@@ -513,34 +484,39 @@ function Home(){
               <p>
                 <IoLogoWhatsapp className="text-white w-14 h-14 ml-4 border rounded-full bg-black px-2 py-2" />
               </p>
+              <p>
+                <HiOutlineMail className="text-white w-14 h-14 ml-4 border rounded-full bg-black px-2 py-2" />
+              </p>
             </div>
-            <div className="  flex justify-center  mt-4  ">
-              <div className="overflow-hidden shadow-lg   ">
-                <input
-                  type="text"
-                  className="pl-6 pr-4 py-2 border rounded-lg py-3 text-sm  focus:outline-none sm:w-96 w-20 "
-                  placeholder="Email"
-                />
+            <div className="  flex justify-center  mt-4   ">
+              <div className="overflow-hidden shadow-lg  border border-black rounded-lg ">
+              <input
+                                    type="text"
+                                    className="pl-6 pr-4 py-2 border rounded-lg py-3 text-sm  focus:outline-none sm:w-96 w-20 "
+                                    placeholder="Email"
+                                    />
               </div>
   
-              <div className=" mt-2 ml-32 sm:w-40 w-24 sm:h-10  h-6 border rounded-lg bg-purple-400 cursor-pointer ">
-                <p className="pl-4  text-center sm:text-lg text-sm">Subscribe</p>
+              <div className="  mt-1   sm:w-40 w-24 sm:h-10  h-6   cursor-pointer ">
+              <button
+                  class="ml-4   text-white px-4 py-2 rounded-lg transition duration-200 ease-in-out hover:bg-purple-700 active:bg-purple-900 focus:outline-none"
+                 style={{backgroundColor: "#B6ADFD"}}  >
+                  Subscribe
+              </button>
               </div>
+              
             </div>
           </div>
+        
         </div>
-        <hr className="  border-2 border-black" />
-        <div className="flex justify-between items-center    ">
-              <div className="   m-auto  ">
-                <img className="w-[400px] h-[150px]  ml-40 " src="/rose2.png" alt=""/>
-              </div>
-              <div className="">
-                  <p className="sm:text-xl font-bold text-lg   mt-10   ">
+        <div className="  flex  justify-between px-4    ">    
+                <p className="sm:text-md   text-lg  ">© Acchoos.com, All Right Reserved.</p>
+                  <p className="sm:text-md   text-lg      ">
                     *Terms And Conditions
-                  </p>
-              </div>
-         
+                  </p>            
         </div>
+         
+     
 
 
       </div>

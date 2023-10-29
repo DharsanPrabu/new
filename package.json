@@ -1,5 +1,4 @@
 {
-  "homepage": "http://DharsanPrabu.github.io/new",
   "name": "space",
   "version": "0.1.0",
   "private": true,
@@ -9,8 +8,10 @@
     "@testing-library/user-event": "^13.5.0",
     "contentful": "^10.6.3",
     "install": "^0.13.0",
+    "jotai": "^2.5.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-helmet": "^6.1.0",
     "react-icons": "^4.11.0",
     "react-router": "6",
     "react-scripts": "5.0.1",

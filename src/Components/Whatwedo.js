@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import { AiOutlineYoutube } from "react-icons/ai";
 import { AiOutlineInstagram } from "react-icons/ai";
 import { IoLogoWhatsapp } from "react-icons/io";
+import { BsCart4 } from "react-icons/bs";
+import Footer from "../Footer/Footer";
 function Whatwedo(){
     const initialImages = [
         'ach1.jpg',
@@ -37,74 +39,104 @@ function Whatwedo(){
       const toggleImages = () => {
         setShowMore(!showMore);
       };
+
+      const [cartQuantities, setCartQuantities] = useState(images.map(() => 0));
+
+  // Function to increment the cart quantity for a specific item
+  const incrementCart = (index) => {
+    const newQuantities = [...cartQuantities];
+    newQuantities[index] += 1;
+    setCartQuantities(newQuantities);
+  };
+
+  // Function to decrement the cart quantity for a specific item
+  const decrementCart = (index) => {
+    if (cartQuantities[index] > 0) {
+      const newQuantities = [...cartQuantities];
+      newQuantities[index] -= 1;
+      setCartQuantities(newQuantities);
+    }
+  };
+
+
     return(
         <div>
             <Header/> 
-            <div className="relative flex justify-center mt-20">
-                <img className="w-[800px] h-[400px] border rounded-3xl" src="bg67.avif" alt="" />
-                    <div className="absolute inset-0 flex flex-col items-center justify-center">
-                        <div className="  w-[300px]  h-[180px] bg-white py-10 ">
-                        <p className="text-4xl font-bold text-center">Offer</p>
-                        <div className="flex justify-center">
-                            <button class="w-[150px] bg-black h-[50px] my-3 flex items-center justify-center rounded-xl cursor-pointer relative overflow-hidden transition-all duration-500 ease-in-out shadow-md hover:scale-105 hover:shadow-lg before:absolute before:top-0 before:-left-full before:w-full before:h-full before:bg-gradient-to-r before:from-[#009b49] before:to-[rgb(105,184,141)] before:transition-all before:duration-500 before:ease-in-out before:z-[-1] before:rounded-xl hover:before:left-0 text-[#fff]">
-                            Shop Now
-                            </button>
-                        </div>
-                        </div>
-                    </div>
+
+            <div className="sm:absolute  sm:w-full w-[200px] sm:h-full   flex justify-between">
+          <img className="w-[260px] h-[340px] ml-40 mt-24 rounded-t-full " src=" ach1.jpg"/>
+          <img className="w-[260px] h-[340px] mr-40 mt-24 rounded-t-full " src=" ach4.jpg"/>
+
             </div>
+        <div className="  flex justify-center  ">
+          <img className="w-[1200px] h-600px]" src="new collection.jpeg"/>
+        </div>
+                 
 
 
             <div>
 
-                <p className="text-4xl font-semibold text-center mt-10" >New Arrival</p>
+                <p id="arrival" className="text-4xl font-semibold text-center mt-10" >New Arrival</p>
 
             </div>
 
             <div className="flex justify-center gap-20 ">
-                <div class="w-60    p-3 flex flex-col gap-1   ">
-                    <div class="  ">
-                        <img className="rounded-3xl" src="ach1.jpg"alt="Image Alt Text" />
-                    </div>
-                    <div className="text-center">
-                        <p className="text-lg font-semibold">Ikkat Pochampally Sarees</p>
-                        <button
-                            class="bg-purple-500 text-white w-[120px] px-4 py-2 rounded-full transition duration-200 ease-in-out 
-                            hover:bg-purple-700 active:bg-purple-900 focus:outline-none" > Add to cart 
-                        </button>
-                    </div>
-                       
-                   </div>
+            <div className="card">
+  <div className="card-img">
+  <img className="rounded-3xl  cursor-pointer" src="ach1.jpg"alt="Image Alt Text" />
+    
+  </div>
+  <div className="card-info">
+    <p className="text-title">Fabric</p>
+    <p className="text-body">Product description and details</p>
+  </div>
+  <div className="card-footer">
+  <span className="text-title">Rs.1000</span>
+  <div className="card-button">
+  <BsCart4/>
+  </div>
 
-                   <div class="w-60    p-3 flex flex-col gap-1   ">
-                    <div class="  ">
-                        <img className="rounded-3xl" src="ach1.jpg"alt="Image Alt Text" />
-                    </div>
-                    <div className="text-center">
-                        <p className="text-lg font-semibold">Ikkat Pochampally Sarees</p>
-                        <button
-                            class="bg-purple-500 text-white w-[120px] px-4 py-2 rounded-full transition duration-200 ease-in-out 
-                            hover:bg-purple-700 active:bg-purple-900 focus:outline-none" > Add to cart 
-                        </button>
-                    </div>
-                       
-                   </div>
+</div>
 
-                   <div class="w-60    p-3 flex flex-col gap-1   ">
-                    <div class="  ">
-                        <img className="rounded-3xl" src="ach1.jpg"alt="Image Alt Text" />
-                    </div>
-                    <div className="text-center">
-                        <p className="text-lg font-semibold">Ikkat Pochampally Sarees</p>
-                        <button
-                            class="bg-purple-500 text-white w-[120px] px-4 py-2 rounded-full transition duration-200 ease-in-out 
-                            hover:bg-purple-700 active:bg-purple-900 focus:outline-none" > Add to cart 
-                        </button>
-                        
-                    </div>
-   
-                   </div>
+            </div>
+ 
+            <div class="card">
+  <div className="card-img">
+  <img className="rounded-3xl cursor-pointer" src="ach3.jpg"alt="Image Alt Text" />
+    
+  </div>
+  <div className="card-info">
+    <p className="text-title">Fabric</p>
+    <p className="text-body">Product description and details</p>
+  </div>
+  <div className="card-footer">
+  <span className="text-title">Rs.1000</span>
+  <div className="card-button">
+    <BsCart4/>
+  </div>
 
+</div>
+
+            </div>
+
+            <div className="card">
+  <div className="card-img">
+  <img className="rounded-3xl cursor-pointer" src="ach4.jpg"alt="Image Alt Text" />
+    
+  </div>
+  <div class="card-info">
+    <p class="text-title">Fabric</p>
+    <p class="text-body">Product description and details</p>
+  </div>
+  <div class="card-footer">
+  <span class="text-title">Rs.1000</span>
+  <div class="card-button">
+  <BsCart4/>
+  </div>
+
+</div>
+
+            </div>
                </div>
 
                <div className=" ">
@@ -114,71 +146,62 @@ function Whatwedo(){
                 <div>
                     <p className="text-6xl text-semibold  text-center mt-40">Collections</p>
                 </div>
-                <div className="flex justify-center gap-4 flex-wrap mt-10">
+             <div className="flex justify-center gap-4 flex-wrap mt-10">
       {images.slice(0, showMore ? images.length : 8).map((image, index) => (
         <div key={index} className="w-80 p-3 gap-1">
           <div>
             <img className="rounded-3xl" src={image} alt="Image Alt Text" />
+          </div>
+          <div className="  mt-4">
+           
+
+           <div className="flex justify-between ">
+             
+           <div className="  ">
+           <button
+              onClick={() => decrementCart(index)}
+              className="  text-white mt-1 px-2 py-1 rounded-md"style={{
+                backgroundColor: "#B6ADFD"}}
+            >
+              -
+            </button>
+            <span className="p-2 text-sm">{cartQuantities[index]} meters</span>
+
+            <button
+              onClick={() => incrementCart(index)}
+              className="  text-white  px-2 py-1 rounded-md"style={{
+                backgroundColor: "#B6ADFD"}}
+            >
+              +
+            </button>
+           
+           </div>
+           <div>
+            <button
+                    class="    text-white px-4 py-2 rounded-lg transition duration-200 ease-in-out hover:bg-purple-700 active:bg-purple-900 focus:outline-none"
+                    style={{
+                      backgroundColor: "#B6ADFD"}} >
+                    Add to cart
+                  </button>
+            </div>
+           </div>
+
+               
+
           </div>
         </div>
       ))}
       {images.length > 4 && (
         <button
           onClick={toggleImages}
-          className="bg-blue-500 text-white p-2 rounded-md mt-4"
+          className="  text-white p-2 rounded-md mt-4"style={{
+            backgroundColor: "#B6ADFD"}}
         >
           {showMore ? 'Show Less' : 'Show More'}
         </button>
       )}
     </div>
-
-          <div className="h-full bg-purple-400 " >
-          <div className="h-full bg-purple-400 ">
-                    <div className="flex justify-center mt-8 ">
-                                <p>
-                                    <AiOutlineYoutube className=" text-white w-14 h-14 border rounded-full bg-black px-2 py-2" />
-                                </p>
-                                <p>
-                                    <AiOutlineInstagram className=" text-white w-14 h-14 ml-4 border rounded-full bg-black px-2 py-2" />
-                                </p>
-                                <p>
-                                    <IoLogoWhatsapp className="text-white w-14 h-14 ml-4 border rounded-full bg-black px-2 py-2" />
-                                </p>
-                                </div>
-
-                                <div className="  flex justify-center  mt-4  ">
-                                <div className="overflow-hidden shadow-lg   ">
-                                    <input
-                                    type="text"
-                                    className="pl-6 pr-4 py-2 border rounded-lg py-3 text-sm  focus:outline-none sm:w-96 w-20 "
-                                    placeholder="Email"
-                                    />
-                                </div>
-                    
-                                <button
-                                    class="bg-purple-500 text-white px-4 py-2 rounded-lg transition duration-200 ease-in-out hover:bg-purple-700 active:bg-purple-900 focus:outline-none"
-                                    >
-                                    Subscribe
-                                    </button>
-                                </div>
-            </div>
-           
-                    <div className="h-full bg-purple-400   mt-20">
-                    <hr className="  border-2 border-black mt-12 " />
-                                <div className="flex justify-between items-center    ">
-                                        <div className="   m-auto  ">
-                                            <img className="w-[400px] h-[150px]  ml-40 " src="/rose2.png" alt=""/>
-                                        </div>
-                                        <div className="">
-                                            <p className="sm:text-xl font-bold text-lg   mt-10   ">
-                                                *Terms And Conditions
-                                            </p>
-                                        </div>
-                            
-                                </div>
-                    </div>
-        
-            </div>      
+       <Footer/>    
          
 
 
