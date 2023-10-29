@@ -22,7 +22,7 @@ function Header(){
               {" "}
                 
               <img className="mr-10 mt-4 cursor-pointer "onClick={() => {navigate("/")}}
-                src="/Acchoos Logo.png"
+                src="Acchoos Logo.png"
                 alt=""
                 width="100px"
               />

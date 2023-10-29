@@ -4,6 +4,8 @@ import { AiOutlineYoutube } from "react-icons/ai";
 import { AiOutlineInstagram } from "react-icons/ai";
 import { IoLogoWhatsapp } from "react-icons/io";
 import { BsCart4 } from "react-icons/bs";
+import { useNavigate } from 'react-router-dom';
+
 import Footer from "../Footer/Footer";
 function Whatwedo(){
     const initialImages = [
@@ -32,6 +34,7 @@ function Whatwedo(){
         'ach3.jpg',
         'ach4.jpg'
       ];
+      const navigate = useNavigate();
 
       const [images, setImages] = useState(initialImages);
       const [showMore, setShowMore] = useState(false);
@@ -64,12 +67,12 @@ function Whatwedo(){
             <Header/> 
 
             <div className="sm:absolute  sm:w-full w-[200px] sm:h-full   flex justify-between">
-          <img className="w-[260px] h-[340px] ml-40 mt-24 rounded-t-full " src=" ach1.jpg"/>
-          <img className="w-[260px] h-[340px] mr-40 mt-24 rounded-t-full " src=" ach4.jpg"/>
+          <img className="w-[260px] h-[340px] ml-40 mt-20 rounded-t-full " src=" ach1.jpg"/>
+          <img className="w-[260px] h-[340px] mr-44 mt-16 rounded-t-full " src=" ach4.jpg"/>
 
             </div>
         <div className="  flex justify-center  ">
-          <img className="w-[1200px] h-600px]" src="new collection.jpeg"/>
+          <img className="w-[1200px] h-600px]" src="newcollections.jpg"/>
         </div>
                  
 
@@ -93,7 +96,7 @@ function Whatwedo(){
   <div className="card-footer">
   <span className="text-title">Rs.1000</span>
   <div className="card-button">
-  <BsCart4/>
+  <BsCart4 onClick={() => {navigate("/Addtocart")}}/>
   </div>
 
 </div>
@@ -112,7 +115,7 @@ function Whatwedo(){
   <div className="card-footer">
   <span className="text-title">Rs.1000</span>
   <div className="card-button">
-    <BsCart4/>
+    <BsCart4 onClick={() => {navigate("/Addtocart")}}/>
   </div>
 
 </div>
@@ -131,7 +134,7 @@ function Whatwedo(){
   <div class="card-footer">
   <span class="text-title">Rs.1000</span>
   <div class="card-button">
-  <BsCart4/>
+  <BsCart4 onClick={() => {navigate("/Addtocart")}}/>
   </div>
 
 </div>
@@ -161,16 +164,16 @@ function Whatwedo(){
            <button
               onClick={() => decrementCart(index)}
               className="  text-white mt-1 px-2 py-1 rounded-md"style={{
-                backgroundColor: "#B6ADFD"}}
+                backgroundColor: "#7539a7"}}
             >
               -
             </button>
-            <span className="p-2 text-sm">{cartQuantities[index]} meters</span>
+            <span className="p-2 text-sm">{cartQuantities[index]} meter</span>
 
             <button
               onClick={() => incrementCart(index)}
               className="  text-white  px-2 py-1 rounded-md"style={{
-                backgroundColor: "#B6ADFD"}}
+                backgroundColor: "#7539a7"}}
             >
               +
             </button>
@@ -180,7 +183,7 @@ function Whatwedo(){
             <button
                     class="    text-white px-4 py-2 rounded-lg transition duration-200 ease-in-out hover:bg-purple-700 active:bg-purple-900 focus:outline-none"
                     style={{
-                      backgroundColor: "#B6ADFD"}} >
+                      backgroundColor: "#7539a7 "}}onClick={() => {navigate("/Addtocart")}} >
                     Add to cart
                   </button>
             </div>
@@ -195,7 +198,7 @@ function Whatwedo(){
         <button
           onClick={toggleImages}
           className="  text-white p-2 rounded-md mt-4"style={{
-            backgroundColor: "#B6ADFD"}}
+            backgroundColor: "#7539a7"}}
         >
           {showMore ? 'Show Less' : 'Show More'}
         </button>

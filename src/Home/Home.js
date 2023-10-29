@@ -233,28 +233,35 @@ function Home(){
       <Header></Header>
       <div>     
          <Slider {...settings1} className=" ">
-        <div className="px-6 ">
-          <p className="  rounded overflow-hidden shadow-lg cursor-pointer ">
-            <img
-              src="bg1.png"
-              alt="Image Alt Text"
-              // style={{ width: "auto", height: "auto" }}
-            />
-          </p>
+        <div className="px-6 relative">
+        <div className="sm:absolute  sm:w-full w-[200px] sm:h-full cursor-pointer   flex"onClick={() => {navigate("/Whatwedo")}}>
+          <div>
+          <img className="w-[280px] h-[360px] ml-28 mt-20 rounded-t-full " src=" ach1.jpg"/>
+
+          </div>
+          <div>
+          <img className="w-[280px] h-[360px] mt-20 ml-[520px] rounded-t-full " src=" ach4.jpg"/>
+
+          </div>
+
+            </div>
+        <div className="  flex justify-center  cursor-pointer  ">
+          <img className=" " src="newcollections.jpg"/>
+        </div>
         </div>
         <div className="px-6 ">
           <p className=" rounded overflow-hidden shadow-lg cursor-pointer"onClick={() => {navigate("/Saveadate")}}>
             <img className="w-[1400px] h-[500px]"
-              src="bg4news.jpeg"
+              src="save.jpg"
               alt="Image Alt Text"
               // style={{ width: "300px", height: "400px" }}
             />
           </p>
         </div>
         <div className="px-6 ">
-          <p className="  rounded overflow-hidden shadow-lg cursor-pointer"onClick={() => {navigate("/Whatwedo")}}>
+          <p className="  rounded overflow-hidden shadow-lg cursor-pointer"onClick={() => {navigate("/Secretsofachoos" )}}>
             <img
-              src="bg3.png"
+              src=" secrete.jpg"
               alt="Image Alt Text"
               // style={{ width: "300px", height: "400px" }}
             />
@@ -263,7 +270,7 @@ function Home(){
         <div className="px-6 ">
           <p className="  rounded overflow-hidden shadow-lg cursor-pointer"onClick={() => {navigate("/Primeblossoms")}}>
             <img
-              src="bg4.png"
+              src="prime.jpg"
               alt="Image Alt Text"
               // style={{ width: "300px", height: "400px" }}
             />
@@ -284,13 +291,13 @@ function Home(){
           data-bs-interval="3000"
         ></div>
            
-           <div className="absolute  flex justify-between  w-full mt-10 ">
-           <img className="   w-[250px] h-[200px]     " src="leftnews.png" alt=""/>
-            <img className="  w-[250px] h-[200px]    float-right   " src="rightnews.png" alt=""/>
+           <div className="    flex justify-between  w-full      ">
+           <img className="   w-[200px] h-[200px]     " src="sideleft.png" alt=""/>
+            <img className="  w-[200px] h-[200px]    " src="rightside.png" alt=""/>
            </div>
 
   
-        <div className=" text-4xl  w-auto px-10 sm:mt-40 mt-10   py-20 py-10"style={{ backgroundColor: "#B6ADFD"}}>
+        <div className=" text-4xl  w-auto px-10     py-20 py-10"style={{ backgroundColor: "#B6ADFD"}}>
           <h3 className="sm:text-4xl text-sm text-center">
             Upload your own design
           </h3>
@@ -347,22 +354,22 @@ function Home(){
           <button
             onClick={() => decrementQuantity(item.id)}
             className="text-white px-3 py-1 rounded-lg transition duration-200 ease-in-out hover:bg-purple-700 active:bg-purple-900 focus:outline-none"
-            style={{ backgroundColor: "#B6ADFD" }}
+            style={{ backgroundColor: "#7539a7" }}
           >
             -  
           </button>
-          <span className="text-sm font-bold">{itemQuantities[item.id]} meters</span>
+          <span className="text-sm font-bold">{itemQuantities[item.id]} meter</span>
           <button
             onClick={() => incrementQuantity(item.id)}
             className="text-white px-3 py-1 rounded-lg transition duration-200 ease-in-out hover-bg-purple-700 active:bg-purple-900 focus:outline-none"
-            style={{ backgroundColor: "#B6ADFD" }}
+            style={{ backgroundColor: "#7539a7" }}
           >
             +  
           </button>
         </div>
         <button
           className="text-white px-4 py-2 rounded-lg transition duration-200 ease-in-out hover:bg-purple-700 active:bg-purple-900 focus:outline-none"
-          style={{ backgroundColor: "#B6ADFD" }}
+          style={{ backgroundColor: "#7539a7" }}onClick={() => {navigate("Addtocart")}}
         >
           Add to cart
         </button>
@@ -405,8 +412,8 @@ function Home(){
   
                   <div className="sm:ml-10 ml-4 ">
                   <button
-                    class="  text-white px-4 py-2 rounded-full transition duration-200 ease-in-out hover:bg-purple-700 active:bg-purple-900 focus:outline-none"
-                    style={{ backgroundColor: "#B6ADFD"}}>
+                    class="  text-white px-4 py-2 rounded-lg transition duration-200 ease-in-out hover:bg-purple-700 active:bg-purple-900 focus:outline-none"
+                    style={{ backgroundColor: "#7539a7"}}>
                     Submit
                   </button>
                   </div>
@@ -500,7 +507,7 @@ function Home(){
               <div className="  mt-1   sm:w-40 w-24 sm:h-10  h-6   cursor-pointer ">
               <button
                   class="ml-4   text-white px-4 py-2 rounded-lg transition duration-200 ease-in-out hover:bg-purple-700 active:bg-purple-900 focus:outline-none"
-                 style={{backgroundColor: "#B6ADFD"}}  >
+                 style={{backgroundColor: "#7539a7"}}  >
                   Subscribe
               </button>
               </div>

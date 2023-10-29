@@ -12,6 +12,7 @@ import { Helmet } from 'react-helmet';
 import Clientside from './Clientside/Client';
 import Product from './Clientside/Product';
 import Addproduct from './Clientside/Addproduct';
+import Addtocart from './Addtocart/Addtocart';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
       <Route path="/Primeblossoms" element={<Primeblossoms/>} caseSensitive={true} />
       <Route path="/Login" element={<Login/>} caseSensitive={true} />
       <Route path="/Clientside" element={ <Clientside/>} caseSensitive={true} />
+      <Route path="/Addtocart" element={ < Addtocart/>} caseSensitive={true} />
 
     </Routes>
   </HashRouter>

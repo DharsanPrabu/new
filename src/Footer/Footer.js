@@ -85,7 +85,7 @@ function Footer(){
                                 <button
                                     class="ml-4   text-white px-4 py-2 rounded-lg transition duration-200 ease-in-out hover:bg-purple-700 active:bg-purple-900 focus:outline-none"
                                     style={{
-                                      backgroundColor: "#B6ADFD"}} >
+                                      backgroundColor: "#7539a7"}} >
                                     Subscribe
                                     </button>
                   </div>
